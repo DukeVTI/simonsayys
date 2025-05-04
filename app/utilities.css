@@ -1,0 +1,25 @@
+.heading {
+    text-transform: uppercase;
+    background-color: black;
+    padding: 1.5rem 0.75rem;
+    font-family: var(--font-work-sans);
+    font-weight: 800;
+    color: white;
+    text-align: center;
+    margin-top: 1.25rem;
+    margin-bottom: 1.25rem;
+    max-width: 64rem;
+    font-size: 36px;
+    line-height: 46px;
+  }
+  
+  .font-work-sans {
+    font-family: var(--font-work-sans);
+  }
+  
+  @media (min-width: 640px) {
+    .heading {
+      font-size: 54px;
+      line-height: 64px;
+    }
+  }

@@ -1,0 +1,14 @@
+:root {
+  --primary: #ff4d6d;
+  --primary-dark: #e63e5c;
+  --secondary: #9a4ef1;
+  --dark: #181818;
+  --light: #f8f9fa;
+  --gray: #808080;
+  --light-gray: #3a3a3a;
+  --success: #4CAF50;
+  --error: #FF3D00;
+  --gradient: linear-gradient(135deg, var(--primary), var(--secondary));
+  --glass: rgba(26, 26, 26, 0.75);
+  --glow: 0 0 15px rgba(255, 77, 109, 0.5);
+}

@@ -1,0 +1,510 @@
+/* styles/Header.module.css */
+@import url('https://fonts.googleapis.com/css2?family=Henny+Penny&display=swap');
+:root {
+    --primary: #ff4d6d;
+    --primary-dark: #e63e5c;
+    --secondary: #9a4ef1;
+    --dark: #181818;
+    --light: #f8f9fa;
+    --gray: #808080;
+    --light-gray: #3a3a3a;
+    --gradient: linear-gradient(135deg, var(--primary), var(--secondary));
+    --glass: rgba(26, 26, 26, 0.75);
+    --glow: 0 0 15px rgba(255, 77, 109, 0.5);
+  }
+  
+  .header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    transition: all 0.4s ease;
+    background: rgba(24, 24, 24, 0.2);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    height: 80px;
+    display: flex;
+    align-items: center;
+  }
+  
+  .header.scrolled {
+    background: rgba(24, 24, 24, 0.92);
+    backdrop-filter: blur(12px);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+    height: 70px;
+  }
+  
+  .headerInner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 92%;
+    max-width: 1400px;
+    margin: 0 auto;
+    position: relative;
+  }
+  
+  /* Logo Styling */
+  .logoArea {
+    position: relative;
+  }
+  
+  .logo {
+
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    position: relative;
+  }
+  
+  .logoGlow {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background: var(--primary);
+    opacity: 0.5;
+    filter: blur(20px);
+    border-radius: 50%;
+    z-index: -1;
+  }
+  
+  .logoName {
+    font-family: 'Henny Penny', cursive;
+    display: flex;
+    align-items: center;
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 2rem;
+    letter-spacing: -1px;
+    margin-left: 10px;
+    transition: all 0.3s ease;
+    text-shadow: 0 0 10px rgba(255, 77, 109, 0.5), 0 0 20px rgba(255, 77, 109, 0.3);
+    /* font-weight: 800;
+    font-size: 1.8rem;
+    letter-spacing: -0.5px; */
+  }
+  
+  .logoPrimary {
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  
+  .logoSecondary {
+    color: var(--light);
+    margin-left: 2px;
+  }
+  
+  /* Main Navigation */
+  .mainNav {
+    display: flex;
+    margin-left: 30px;
+  }
+  
+  .navList {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 10px;
+  }
+  
+  .navItem {
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: 80px;
+  }
+  
+  .navLink {
+    color: var(--light);
+    text-decoration: none;
+    font-weight: 500;
+    padding: 10px 16px;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+    position: relative;
+  }
+  
+  .navLink:hover {
+    color: var(--primary);
+    background: rgba(255, 77, 109, 0.08);
+  }
+  
+  .navLink.active {
+    color: var(--primary);
+    font-weight: 600;
+  }
+  
+  .navLink.active::after {
+    content: "";
+    position: absolute;
+    bottom: -2px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 20px;
+    height: 3px;
+    background: var(--gradient);
+    border-radius: 3px;
+  }
+  
+  /* Dropdown Styling */
+  .dropdownContainer {
+    position: relative;
+  }
+  
+  .dropdownTrigger {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: var(--light);
+    font-weight: 500;
+    background: none;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  
+  .dropdownTrigger:hover {
+    color: var(--primary);
+    background: rgba(255, 77, 109, 0.08);
+  }
+  
+  .dropdownIcon {
+    transition: transform 0.3s ease;
+  }
+  
+  .dropdownContainer:hover .dropdownIcon {
+    transform: rotate(180deg);
+  }
+  
+  .dropdownMenu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 220px;
+    background: rgba(30, 30, 30, 0.95);
+    backdrop-filter: blur(10px);
+    border-radius: 12px;
+    padding: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 2px rgba(255, 77, 109, 0.1);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    z-index: 100;
+  }
+  
+  .dropdownContainer:hover .dropdownMenu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+  
+  .dropdownItem {
+    display: block;
+    padding: 12px 16px;
+    color: var(--light);
+    text-decoration: none;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+    font-weight: 400;
+  }
+  
+  .dropdownItem:hover {
+    background: var(--gradient);
+    color: white;
+    transform: translateX(3px);
+  }
+  
+  /* Auth Buttons */
+  .authControls {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  
+  .loginButton {
+    color: var(--light);
+    text-decoration: none;
+    padding: 8px 18px;
+    border-radius: 50px;
+    font-weight: 500;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+  }
+  
+  .loginButton:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.3);
+  }
+  
+  .signupButton {
+    position: relative;
+    background: var(--gradient);
+    color: white;
+    text-decoration: none;
+    padding: 10px 24px;
+    border-radius: 50px;
+    font-weight: 600;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .signupButton:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--glow);
+  }
+  
+  .buttonHighlight {
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0) 70%);
+    opacity: 0;
+    transition: opacity 0.5s;
+  }
+  
+  .signupButton:hover .buttonHighlight {
+    opacity: 1;
+    animation: pulse 2s infinite;
+  }
+  
+  @keyframes pulse {
+    0%, 100% {
+      transform: scale(1);
+      opacity: 0.2;
+    }
+    50% {
+      transform: scale(1.05);
+      opacity: 0.4;
+    }
+  }
+  
+  /* Mobile Menu Button */
+  .mobileMenuButton {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .hamburger {
+    width: 24px;
+    height: 18px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  .hamburger span {
+    display: block;
+    height: 2px;
+    width: 100%;
+    background: var(--light);
+    border-radius: 2px;
+    transition: all 0.3s ease;
+  }
+  
+  .hamburger.active span:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+  }
+  
+  .hamburger.active span:nth-child(2) {
+    opacity: 0;
+  }
+  
+  .hamburger.active span:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+  }
+  
+  /* Mobile Navigation */
+  .mobileNavigation {
+    position: fixed;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    height: calc(100vh - 70px);
+    background: rgba(24, 24, 24, 0.98);
+    backdrop-filter: blur(10px);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+    overflow-y: auto;
+  }
+  
+  .mobileNavigation.open {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+  
+  .mobileNavInner {
+    padding: 30px 20px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .mobileNavList {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 30px 0;
+  }
+  
+  .mobileNavItem {
+    margin-bottom: 20px;
+  }
+  
+  .mobileNavHeader {
+    font-weight: 600;
+    color: var(--primary);
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+  }
+  
+  .mobileNavLink {
+    display: block;
+    color: var(--light);
+    font-size: 1.2rem;
+    font-weight: 500;
+    text-decoration: none;
+    padding: 12px 0;
+    transition: all 0.2s ease;
+  }
+  
+  .mobileNavLink:hover, .mobileNavLink:active {
+    color: var(--primary);
+    transform: translateX(5px);
+  }
+  
+  .mobileSubNav {
+    list-style: none;
+    padding: 0 0 0 15px;
+    margin: 5px 0 15px 0;
+    border-left: 2px solid rgba(255, 77, 109, 0.3);
+  }
+  
+  .mobileSubNav .mobileNavLink {
+    font-size: 1rem;
+    padding: 10px 0;
+  }
+  
+  .mobileAuthButtons {
+    display: flex; 
+    flex-direction: column;
+    gap: 15px;
+    margin-top: auto;
+    margin-bottom: 30px;
+  }
+  
+  .mobileLogin {
+    display: block;
+    text-align: center;
+    color: var(--primary);
+    text-decoration: none;
+    padding: 14px;
+    border: 1px solid var(--primary);
+    border-radius: 8px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+  }
+  
+  .mobileLogin:hover {
+    background: rgba(255, 77, 109, 0.1);
+  }
+  
+  .mobileSignup {
+    display: block;
+    text-align: center;
+    background: var(--gradient);
+    color: white;
+    text-decoration: none;
+    padding: 16px;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+  }
+  
+  .mobileSignup:hover {
+    box-shadow: var(--glow);
+  }
+  
+  /* Model promotion in mobile menu */
+  .modelPromoCta {
+    background: rgba(154, 78, 241, 0.1);
+    border: 1px solid rgba(154, 78, 241, 0.3);
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .modelPromoCta h3 {
+    font-size: 1.2rem;
+    color: var(--secondary);
+    margin: 0 0 5px 0;
+  }
+  
+  .modelPromoCta p {
+    color: var(--light);
+    margin: 0 0 15px 0;
+    opacity: 0.8;
+  }
+  
+  .modelApplyButton {
+    display: inline-block;
+    background: var(--secondary);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+  }
+  
+  .modelApplyButton:hover {
+    background: #8a3dd8;
+    transform: translateY(-2px);
+  }
+  
+  /* Responsive Styles */
+  @media (max-width: 1024px) {
+    .mainNav {
+      display: none;
+    }
+    
+    .mobileMenuButton {
+      display: block;
+    }
+    
+    .header, .header.scrolled {
+      height: 70px;
+    }
+    
+    .logoName {
+      font-size: 1.5rem;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .authControls {
+      display: none;
+    }
+    
+    .headerInner {
+      width: 90%;
+    }
+  }
